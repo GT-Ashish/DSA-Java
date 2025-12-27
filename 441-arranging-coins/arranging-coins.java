@@ -1,20 +1,26 @@
 class Solution {
     public int arrangeCoins(int n) {
-        int copy = n;
-        int i;
-        for (i = 1; i <= copy; i++) {
-            n = n - i;
-            if (n == 0) {
-
-                return i;
-
-            } else if (n < 0) {
-
-                return i - 1;
-
+        int start = 1;
+        int end = n;
+        int middle;
+        long number;
+        while(start <= end){
+            middle = start + (end - start) / 2;
+            number=countStairs(middle);
+            if(number == n){
+                return middle;
             }
-        }
-        return i;
+            else if(number < n){
+                start = middle + 1;
+            }
+            else {
+                end = middle - 1;
+            }
+        } 
+        return end;
+        
     }
-
+    public long countStairs(int n){
+       return((long)n * (n + 1)) / 2; 
+    }
 }
