@@ -2,11 +2,9 @@ class Solution {
     public int maximumPopulation(int[][] logs) {
         int [] population = new int[100];
         int length  = logs.length;
-        for(int t = 0; t < 100; t++){
-            for(int i = 0; i < length; i++){
-                if(logs[i][0] <= (t + 1950) && logs[i][1] > (t + 1950)){
-                    population[t] += 1;
-                }
+        for(int i = 0; i < length; i++){
+            for(int j = logs[i][0]; j < logs[i][1]; j++){
+                population[j - 1950] += 1;
             }
         }
         int max = 0;
